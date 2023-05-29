@@ -7,13 +7,26 @@ eureka:
   instance:
     hostname: localhost
     
+    
 
 spring:
   application:
     name: API-GATEWAY
+
   cloud:
+    
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"
       routes:
+       
+        
       - id: PRODUCT-SERVICE
         uri:
           lb://PRODUCT-SERVICE/
@@ -24,7 +37,7 @@ spring:
           args:
             name: PRODUCT-SERVICE
             fallbackuri: forward:/productServiceFallBack
-              
+      
       - id: ORDER-SERVICE
         uri:
           lb://ORDER-SERVICE/
@@ -45,9 +58,38 @@ spring:
           args:
             name: PAYMENT-SERVICE
             fallbackuri: forward:/paymentServiceFallBack
+      - id: JOBSEEKER-SERVICE
+        uri:
+          lb://JOBSEEKERSERVICE/
+        predicates:
+        - Path=/jobseeker/**
+      - id: RECRUITER-SERVICE
+        uri:
+          lb://RECRUITERSERVICE/
+        predicates:
+        - Path=/recruiter/**
+      - id: JOB-SERVICE
+        uri:
+          lb://JOBSERVICE/
+        predicates:
+        - Path=/jobservice/**
+      - id: SECURITY-SERVICE
+        uri:
+          lb://SECURITY-SERVICE/
+        predicates:
+        - Path=/api/auth/**
         
-      
-  
+       
+        
+   
+#okta:
+#  oauth2:
+#    issuer: https://dev-14013156.okta.com/oauth2/default
+#    audience: api://default
+#    client-id: 0oa9bp13lt1X7hRhb5d7
+#    client-secret: bRmHaVNwL23j71bqtWgQmuM-gAjAaCmxWqsoFdQ-
+#    scopes: openid, profile, email, offline_access 
+
           
      
   
