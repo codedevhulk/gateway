@@ -8,19 +8,25 @@ public class FallBackController {
 
 	
 	
-	@GetMapping("/productServiceFallBack")
-	public String productServiceFallBack() {
-		return "Product service is down!";
+	@GetMapping("/jobSeekerServiceFallBack")
+	public String jobSeekerServiceFallBack() {
+		return "Job seeker service is down! Please try again after some time";
 	}
 	
 	
-	@GetMapping("/orderServiceFallBack")
-	public String orderServiceFallBack() {
-		return "Order service is down!";
+	@GetMapping("/recruiterServiceFallBack")
+	public String recruiterServiceFallBack() {
+		return "Recruiter service is down! Please try again after some time";
 	}
 	
-	@GetMapping("/paymentServiceFallBack")
-	public String paymentServiceFallBack() {
-		return "Payment service is down!";
+	@GetMapping("/securityServiceFallBack")
+	public String securityServiceFallBack() {
+		return "Security service is down! Please try again after some time";
+	}
+	
+	
+	@GetMapping("/jobServiceFallBack")
+	public String jobServiceFallBack() {
+		return "Job service is down! Please try again after some time";
 	}
 }

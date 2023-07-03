@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/gateway")
 public class GatewayController {
 
-	
-	
-	
 	@GetMapping("/index")
 	String hello() {
 		return "Hellooo world";
 	}
+	
 }
