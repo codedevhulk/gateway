@@ -58,7 +58,7 @@ spring:
 #          args:
 #            name: PAYMENT-SERVICE
 #            fallbackuri: forward:/paymentServiceFallBack
-      - id: JOBSEEKER-SERVICE
+      - id: JOBSEEKERSERVICE
         uri:
           lb://JOBSEEKERSERVICE/
         predicates:
@@ -68,7 +68,7 @@ spring:
           args:
             name: JOBSEEKERSERVICE
             fallbackuri: forward:/jobSeekerServiceFallBack
-      - id: RECRUITER-SERVICE
+      - id: RECRUITERSERVICE
         uri:
           lb://RECRUITERSERVICE/
         predicates:
@@ -78,7 +78,7 @@ spring:
           args:
             name: RECRUITERSERVICE
             fallbackuri: forward:/recruiterServiceFallBack
-      - id: JOB-SERVICE
+      - id: JOBSERVICE
         uri:
           lb://JOBSERVICE/
         predicates:
